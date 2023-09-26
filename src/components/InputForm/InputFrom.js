@@ -63,16 +63,8 @@ const InputForm = (props) => {
   };
 
   const submitHandler = (event) => {
-    console.log("on submit", formIsValid);
-
     event.preventDefault();
     if (formIsValid) {
-      console.log(
-        "valid",
-        idState.value,
-        nameState.value,
-        categoryInputRef.current.value
-      );
       props.onSubmit(
         idState.value,
         nameState.value,
@@ -87,33 +79,67 @@ const InputForm = (props) => {
     }
   };
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <label htmlFor="id">Product ID</label>
-        <input
-          id="id"
-          type="number"
-          ref={idInputRef}
-          value={idState.value}
-          onChange={idChangeHandler}
-          onBlur={validateIdHandler}
-        ></input>
-        <label htmlFor="name">Product Name</label>
-        <input
-          id="name"
-          type="text"
-          ref={nameInputRef}
-          value={nameState.value}
-          onChange={nameChangeHandler}
-          onBlur={validateNameHandler}
-        ></input>
-        <label htmlFor="cat">Product Category</label>
-        <select id="cat" ref={categoryInputRef}>
-          <option value="electronicItem">Electronics</option>
-          <option value="personalCare">Personal Care</option>
-          <option value="foodItem">Food Items</option>
-        </select>
-        <button type="submit">Add Product</button>
+    <div className="mx-10 mt-5 text-center border border-gray-300 p-5 rounded-lg">
+      <form onSubmit={submitHandler} className="flex flex-wrap">
+        <div className="w-full px-3 mb-6">
+          <label
+            htmlFor="id"
+            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          >
+            Product ID
+          </label>
+          <input
+            id="id"
+            type="number"
+            ref={idInputRef}
+            value={idState.value}
+            onChange={idChangeHandler}
+            onBlur={validateIdHandler}
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          />
+        </div>
+        <div className="w-full px-3 mb-6">
+          <label
+            htmlFor="name"
+            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          >
+            Product Name
+          </label>
+          <input
+            id="name"
+            type="text"
+            ref={nameInputRef}
+            value={nameState.value}
+            onChange={nameChangeHandler}
+            onBlur={validateNameHandler}
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          />
+        </div>
+        <div className="w-full px-3 mb-6">
+          <label
+            htmlFor="cat"
+            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          >
+            Product Category
+          </label>
+          <select
+            id="cat"
+            ref={categoryInputRef}
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          >
+            <option value="Electronics">Electronics</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="Food Items">Food Items</option>
+          </select>
+        </div>
+        <div className="w-full">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Add Product
+          </button>
+        </div>
       </form>
     </div>
   );

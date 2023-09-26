@@ -18,8 +18,8 @@ function App() {
       foodItems = [],
       personalCareItems = [];
     items.forEach((item) => {
-      if (item.category === "electronicItem") electronicItems.push(item);
-      else if (item.category === "personalCare") personalCareItems.push(item);
+      if (item.category === "Electronics") electronicItems.push(item);
+      else if (item.category === "Personal Care") personalCareItems.push(item);
       else foodItems.push(item);
     });
 
@@ -56,21 +56,23 @@ function App() {
   return (
     <>
       <InputForm onSubmit={formSubmitHandler}></InputForm>
-      <List
-        listTitle="Electronic Items"
-        items={electronicItems}
-        onDelete={deleteItemHandle}
-      ></List>
-      <List
-        listTitle="Food Items"
-        items={foodItems}
-        onDelete={deleteItemHandle}
-      ></List>
-      <List
-        listTitle="Personal Care Items"
-        items={personalCareItems}
-        onDelete={deleteItemHandle}
-      ></List>
+      <div className="mt-10 ml-10 border border-gray-300 p-5 rounded-lg">
+        <List
+          listTitle="Electronic Items"
+          items={electronicItems}
+          onDelete={deleteItemHandle}
+        ></List>
+        <List
+          listTitle="Food Items"
+          items={foodItems}
+          onDelete={deleteItemHandle}
+        ></List>
+        <List
+          listTitle="Personal Care Items"
+          items={personalCareItems}
+          onDelete={deleteItemHandle}
+        ></List>
+      </div>
     </>
   );
 }
